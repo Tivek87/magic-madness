@@ -1,0 +1,111 @@
+// ============================================================================
+// MAGIC MADNESS — NEOFORGE 1.21.1 BUILD CONFIGURATION (MINIMAL & OPTIMIZED)
+// ============================================================================
+
+// #region 1. PLUGINS & JAVA 21 TOOLCHAIN
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.78'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_file_name
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+// #endregion
+
+// #region 2. NEOFORGE 1.21.1 & RUN CONFIGURATIONS
+neoForge {
+    version = neoforge_version
+
+    parchment {
+        mappingsVersion = '2024.11.17'
+        minecraftVersion = minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+
+        server {
+            server()
+            gameDirectory = project.file('run-server')
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+
+        gameTestServer {
+            type = 'gameTestServer'
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+// #endregion
+
+// #region 3. REPOSITORIES, RESOURCES & COMPILER OPTIMIZATION
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+        mod_id             : mod_id,
+        mod_name           : mod_name,
+        mod_version        : mod_version,
+        minecraft_version  : minecraft_version,
+        neoforge_version   : neoforge_version
+    ]
+    inputs.properties replaceProperties
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : mod_name,
+            'Specification-Vendor'    : 'MagicMadness',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'MagicMadness'
+        ])
+    }
+}
+// #endregion

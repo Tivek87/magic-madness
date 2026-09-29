@@ -1,0 +1,8 @@
+# ============================================================================
+# MAGIC MADNESS - LATEST 5 SAVED RELEASE JARS (MAX 5 KEPT IN /releases)
+# ============================================================================
+# Version Scheme: vX.Y.Z-alpha (each segment 0..50, e.g. v0.0.1-alpha .. v42.12.37-alpha)
+
+# #region 1. SAVED JAR VERSIONS (NEWEST FIRST)
+1. v0.0.1-alpha | magic-madness-0.0.1-alpha.jar | 201 KB | sha256:7399a79a08825ca3
+# #endregion

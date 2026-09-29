@@ -1,0 +1,1 @@
+cd "C:\Multiverse Madness\Magic Madness" && .\gradlew.bat runClient
