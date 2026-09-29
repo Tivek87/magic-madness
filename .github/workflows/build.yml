@@ -1,0 +1,38 @@
+# ============================================================================
+# MAGIC MADNESS — GITHUB ACTIONS CI BUILD
+# ============================================================================
+
+# #region 1. TRIGGERS & PERMISSIONS
+name: Build
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+# #endregion
+
+# #region 2. BUILD JOB
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Magic Madness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew && ./gradlew build --console=plain
+      - uses: actions/upload-artifact@v4
+        with:
+          name: magic-madness-jar
+          path: Magic Madness/build/libs/*.jar
+          retention-days: 7
+# #endregion

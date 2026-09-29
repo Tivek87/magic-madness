@@ -1,0 +1,50 @@
+# ============================================================================
+# MAGIC MADNESS - GITIGNORE
+# ============================================================================
+
+# #region 1. GRADLE & BUILD ARTIFACTS
+.gradle/
+**/build/
+Magic Madness/.gradle/
+Magic Madness/build/
+gradle-app.setting
+!gradle-wrapper.jar
+# #endregion
+
+# #region 2. IDE, EDITOR & OS FILES
+.classpath
+.project
+.settings/
+.eclipse/
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+bin/
+out/
+Thumbs.db
+Desktop.ini
+.DS_Store
+# #endregion
+
+# #region 3. MINECRAFT RUN DIRECTORIES & LOGS
+run/
+run-server/
+Magic Madness/run/
+Magic Madness/run-server/
+crash-reports/
+logs/
+*.log
+hs_err_pid*
+*.hprof
+# #endregion
+
+# #region 4. LOCAL RULES & LOCAL BINARIES
+GEMINI.md
+.env
+*.local
+backup*.zip
+scratch/
+releases/*.jar
+# #endregion

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.magicmadness.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MinecraftServerMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

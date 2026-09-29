@@ -1,0 +1,39 @@
+# ============================================================================
+# MAGIC MADNESS — NEOFORGE 1.21.1 MOD METADATA
+# ============================================================================
+
+# #region 1. LOADER & LICENSE
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+# #endregion
+
+# #region 2. MOD DEFINITION & MIXINS
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+description='''
+Unleash elemental and arcane magic in Minecraft! Cast Fireballs, chain Lightning, throw Poison Cloud flasks, blast enemies away with Wind Gusts, or slip into the shadows with Void Step. Includes custom 3D spell visuals and a full in-game Client & Server Config menu.
+'''
+authors="Tivek"
+
+[[mixins]]
+config="${mod_id}.mixins.json"
+# #endregion
+
+# #region 3. DEPENDENCIES (NEOFORGE & MINECRAFT 1.21.1)
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.22)"
+ordering="NONE"
+side="BOTH"
+# #endregion

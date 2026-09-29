@@ -1,0 +1,14 @@
+# ============================================================================
+# MAGIC MADNESS — GITATTRIBUTES
+# ============================================================================
+
+# #region 1. TEXT & BINARY NORMALIZATION
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.webp binary
+*.ogg binary
+*.jar binary
+# #endregion
